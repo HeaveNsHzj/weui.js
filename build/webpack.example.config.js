@@ -7,7 +7,8 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 module.exports = {
     context: path.join(__dirname, '../example'),
     entry: {
-        example: './example.js'
+        example: './example.js',
+        picker: './picker.js'
     },
     output: {
         path: path.join(__dirname, '../dist/example'),
@@ -28,7 +29,7 @@ module.exports = {
             {
                 test: /\.less$/,
                 exclude: /node_modules/,
-                loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]_[hash:base64:5]!postcss!less'
+                loader: 'style!css?modules&importLoaders=1&localIdentName=[local]!postcss!less'
             },
             {
                 test: /\.css$/,
@@ -45,6 +46,12 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '../example/index.html')
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, '../example/picker.html'),
+            filename: 'picker.html',
+            inject: true,
+            chunks: ['picker']
         }),
         new OpenBrowserPlugin({url: 'http://localhost:8001'})
     ]

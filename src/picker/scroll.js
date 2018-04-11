@@ -1,13 +1,13 @@
 /*
 * Tencent is pleased to support the open source community by making WeUI.js available.
-* 
+*
 * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
-* 
+*
 * Licensed under the MIT License (the "License"); you may not use this file except in compliance
 * with the License. You may obtain a copy of the License at
-* 
+*
 *       http://opensource.org/licenses/MIT
-* 
+*
 * Unless required by applicable law or agreed to in writing, software distributed under the License is
 * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
 * either express or implied. See the License for the specific language governing permissions and
@@ -94,8 +94,9 @@ $.fn.scroll = function (options) {
         rowHeight: 34,                              // 列表每一行的高度
         onChange: $.noop,                           // onChange回调
         temp: null,                                 // translate的缓存
-        bodyHeight: 7 * 34                          // picker的高度，用于辅助点击滚动的计算
     }, options);
+    defaults.bodyHeight = 7 * defaults.rowHeight; // picker的高度，用于辅助点击滚动的计算
+
     const items = defaults.items.map((item) => {
         return `<div class="weui-picker__item${item.disabled ? ' weui-picker__item_disabled' : ''}">${typeof item == 'object' ? item.label : item}</div>`;
     }).join('');

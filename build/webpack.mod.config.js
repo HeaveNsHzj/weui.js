@@ -1,6 +1,9 @@
 const path = require('path');
 const pkg = require('../package.json');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const extractLess = new ExtractTextPlugin('../dist/[name].css');
 
 module.exports = function (entry, isMinify) {
     const plugins = [
@@ -8,6 +11,7 @@ module.exports = function (entry, isMinify) {
             NODE_ENV: '"production"',
             'process.env.NODE_ENV': '"production"'
         }),
+        extractLess,
         new webpack.BannerPlugin([
             pkg.name + ' v' + pkg.version + ' (' + pkg.homepage + ')',
             'Copyright ' + new Date().getFullYear() + ', ' + pkg.author,
@@ -45,6 +49,20 @@ module.exports = function (entry, isMinify) {
                     test: /\.html$/,
                     exclude: /node_modules/,
                     loader: 'html?minimize'
+                },
+                {
+                    test: /\.less$/,
+                    exclude: /node_modules/,
+                    loader: extractLess.extract([
+                        'css',
+                        'less'
+                    ])
+                    // loader: 'style!css?modules&importLoaders=1&localIdentName=[local]!postcss!less'
+                },
+                {
+                    test: /\.css$/,
+                    // exclude: /node_modules/,
+                    loader: 'style!css!postcss'
                 }
             ]
         },

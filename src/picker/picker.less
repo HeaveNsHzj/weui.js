@@ -1,0 +1,247 @@
+/*
+* Tencent is pleased to support the open source community by making WeUI available.
+*
+* Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+*
+* Licensed under the MIT License (the "License"); you may not use this file except in compliance
+* with the License. You may obtain a copy of the License at
+*
+*       http://opensource.org/licenses/MIT
+*
+* Unless required by applicable law or agreed to in writing, software distributed under the License is
+* distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+* either express or implied. See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+@weuiColorPrimary: #FA6855;
+@weuiColorWarn: #E64340;
+
+// link
+@weuiLinkColorDefault: #586C94;
+
+// background
+@weuiBgColorDefault: #EFEFF4;
+@weuiBgColorActive: #ECECEC;
+
+// line
+@weuiLineColorLight: #E5E5E5;
+@weuiLineColorDark: #BCBAB6;
+
+// text
+@weuiTextColorTitle: #000000;
+@weuiTextColorTips: #B2B2B2;
+@weuiTextColorWarn: @weuiColorWarn;
+@weuiTextColorGray: #999999;
+
+/* picker */
+@pickerItemHeight: .68rem;
+.setTopLine(@c: #C7C7C7) {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid @c;
+    color: @c;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+}
+
+.setBottomLine(@c: #C7C7C7) {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid @c;
+    color: @c;
+    transform-origin: 0 100%;
+    transform: scaleY(0.5);
+}
+
+.weui-picker {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 5000;
+    backface-visibility: hidden;
+    transform: translate(0, 100%);
+    //slide up animation
+    transition: transform .3s;
+}
+
+.weui-picker__hd {
+    display: flex;
+    padding: 0.18rem .3rem;
+    background-color: #fff;
+    position: relative;
+    text-align: center;
+    font-size: 1.7em;
+    &:after {
+        .setBottomLine(@weuiLineColorLight);
+    }
+}
+
+.weui-picker__action {
+    display: block;
+    flex: 1;
+    color: @weuiColorPrimary;
+    text-decoration: none;
+
+    &:first-child {
+        text-align: left;
+        color: #888;
+    }
+    &:last-child {
+        text-align: right;
+    }
+}
+
+.weui-picker__bd {
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    height: @pickerItemHeight * 7;
+    overflow: hidden;
+}
+
+.weui-picker__group {
+    flex: 1;
+    position: relative;
+    height: 100%;
+    //-webkit-mask-box-image: -webkit-linear-gradient(bottom,transparent,transparent 5%,#fff 50%,#fff 50%,transparent 95%,transparent);
+}
+
+.weui-picker__mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    z-index: 3;
+    background: linear-gradient(180deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .6)), linear-gradient(0deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .6));
+    background-position: top, bottom;
+    background-size: 100% 2.04rem;
+    background-repeat: no-repeat;
+    transform: translateZ(0);
+}
+
+.weui-picker__indicator {
+    width: 100%;
+    height: @pickerItemHeight;
+    position: absolute;
+    left: 0;
+    top: 2.04rem;
+    z-index: 3;
+    &:before {
+        .setTopLine(@weuiLineColorLight);
+    }
+    &:after {
+        .setBottomLine(@weuiLineColorLight);
+    }
+}
+
+.weui-picker__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.weui-picker__item {
+    padding: 0;
+    height: @pickerItemHeight;
+    line-height: @pickerItemHeight;
+    text-align: center;
+    color: #000;
+    font-size: 1.6em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.weui-picker__item_disabled {
+    color: @weuiTextColorGray;
+}
+
+
+/* animate */
+
+@keyframes slideUp {
+    from {
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.weui-animate-slide-up {
+    animation: slideUp ease .3s forwards;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+.weui-animate-slide-down {
+    animation: slideDown ease .3s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.weui-animate-fade-in {
+    animation: fadeIn ease .3s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.weui-animate-fade-out {
+    animation: fadeOut ease .3s forwards;
+}
+
+/* mask */
+.weui-mask {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .6);
+}
+
+.weui-mask_transparent{
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}

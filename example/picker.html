@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>weui.js</title>
+    <!-- <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css"> -->
+    <style>
+        html, body{
+            height: 100%;
+            background-color: #f8f8f8;
+        }
+        body{
+            font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+            font-size: 20px
+        }
+        @media only screen and (-webkit-device-pixel-ratio: 3),
+        @media only screen and (device-pixel-ratio: 3) {
+          body {
+            font-size: 30px;
+          }
+        }
+        .item{
+            padding: 10px 0;
+        }
+        .item__title{
+            margin-bottom: 5px;
+            padding-left: 15px;
+            padding-right: 15px;
+            color: #999;
+            font-weight: normal;
+            font-size: 14px;
+        }
+        .item__ctn{
+            padding: 0 15px;
+        }
+        .page_feedback{
+            padding: 15px;
+            overflow: auto;
+            background-color: #FFFFFF;
+        }
+
+        /*fix fastclick很难点中的bug*/
+        label > * { pointer-events: none; }
+
+        /* weui需要fix的 */
+        .weui-picker__item{
+            padding: 0;
+            height: 34px;
+            line-height: 34px;
+        }
+    </style>
+    <script>!function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(normal,e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=normal?1:1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=normal?"50px": a/2*s*n+"px",window.RATIO = normal?1:s};e.exports=t["default"]}]); flex(false,100, 1);</script>
+
+</head>
+<body ontouchstart>
+<p id="bear"></p>
+<div class="weui-tab" id="tab">
+    <div class="weui-navbar">
+        <div class="weui-navbar__item">反馈</div>
+        <div class="weui-navbar__item">表单</div>
+        <div class="weui-navbar__item">上传</div>
+        <div class="weui-navbar__item">其它</div>
+    </div>
+    <div class="weui-tab__panel">
+        <div class="page_feedback">
+            <a href="javascript:;" id="alertBtn" class="weui-btn weui-btn_default">Alert</a>
+            <a href="javascript:;" id="confirmBtn" class="weui-btn weui-btn_default">Confirm</a>
+            <a href="javascript:;" id="toastBtn" class="weui-btn weui-btn_default">Toast</a>
+            <a href="javascript:;" id="loadingBtn" class="weui-btn weui-btn_default">Loading</a>
+            <a href="javascript:;" id="actionSheetBtn" class="weui-btn weui-btn_default">ActionSheet</a>
+            <a href="javascript:;" id="topTipsBtn" class="weui-btn weui-btn_default">TopTips</a>
+            <a href="javascript:;" id="pickerBtn" class="weui-btn weui-btn_default">Picker</a>
+            <a href="javascript:;" id="datePickerBtn" class="weui-btn weui-btn_default">DatePicker</a>
+            <a href="javascript:;" id="multiPickerBtn" class="weui-btn weui-btn_default">Multi-Picker</a>
+            <a href="javascript:;" id="cascadePickerBtn" class="weui-btn weui-btn_default">Cascade-Picker</a>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

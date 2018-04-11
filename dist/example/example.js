@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -541,9 +541,9 @@
 	    });
 	});
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
 		'use strict';
@@ -1388,9 +1388,9 @@
 	}());
 
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -1444,11 +1444,11 @@
 
 	var _picker = __webpack_require__(26);
 
-	var _gallery = __webpack_require__(32);
+	var _gallery = __webpack_require__(36);
 
 	var _gallery2 = _interopRequireDefault(_gallery);
 
-	var _slider = __webpack_require__(34);
+	var _slider = __webpack_require__(38);
 
 	var _slider2 = _interopRequireDefault(_slider);
 
@@ -1489,9 +1489,9 @@
 	};
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -1619,9 +1619,9 @@
 	exports.default = dialog;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -1879,24 +1879,17 @@
 	     * @returns {*}
 	     */
 	    attr: function attr() {
-	        var _arguments2 = arguments,
-	            _this3 = this;
+	        var _arguments2 = arguments;
 
 	        if (_typeof(arguments[0]) == 'object') {
-	            var _ret = function () {
-	                var attrsObj = _arguments2[0];
-	                var that = _this3;
-	                Object.keys(attrsObj).forEach(function (attr) {
-	                    that.forEach(function ($element) {
-	                        $element.setAttribute(attr, attrsObj[attr]);
-	                    });
+	            var attrsObj = arguments[0];
+	            var that = this;
+	            Object.keys(attrsObj).forEach(function (attr) {
+	                that.forEach(function ($element) {
+	                    $element.setAttribute(attr, attrsObj[attr]);
 	                });
-	                return {
-	                    v: _this3
-	                };
-	            }();
-
-	            if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+	            });
+	            return this;
 	        }
 
 	        if (typeof arguments[0] == 'string' && arguments.length < 2) {
@@ -1985,9 +1978,9 @@
 	exports.default = _balajs2.default;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	// element-closest | CC0-1.0 | github.com/jonathantneal/closest
 
@@ -2024,12 +2017,19 @@
 	})(window.Element.prototype);
 
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
+
+	/*
+	object-assign
+	(c) Sindre Sorhus
+	@license MIT
+	*/
 
 	'use strict';
 	/* eslint-disable no-unused-vars */
+	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
@@ -2050,7 +2050,7 @@
 			// Detect buggy property enumeration order in older V8 versions.
 
 			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-			var test1 = new String('abc');  // eslint-disable-line
+			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
 			test1[5] = 'de';
 			if (Object.getOwnPropertyNames(test1)[0] === '5') {
 				return false;
@@ -2079,7 +2079,7 @@
 			}
 
 			return true;
-		} catch (e) {
+		} catch (err) {
 			// We don't expect any of the above to throw, but better to be safe.
 			return false;
 		}
@@ -2099,8 +2099,8 @@
 				}
 			}
 
-			if (Object.getOwnPropertySymbols) {
-				symbols = Object.getOwnPropertySymbols(from);
+			if (getOwnPropertySymbols) {
+				symbols = getOwnPropertySymbols(from);
 				for (var i = 0; i < symbols.length; i++) {
 					if (propIsEnumerable.call(from, symbols[i])) {
 						to[symbols[i]] = from[symbols[i]];
@@ -2113,9 +2113,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(root, $) {
 		$ = (function(document, s_addEventListener, s_querySelectorAll) {
@@ -2169,15 +2169,15 @@
 	})(this);
 
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = "<div class=\"<%=className%>\"> <div class=weui-mask></div> <div class=\"weui-dialog <% if(isAndroid){ %> weui-skin_android <% } %>\"> <% if(title){ %> <div class=weui-dialog__hd><strong class=weui-dialog__title><%=title%></strong></div> <% } %> <div class=weui-dialog__bd><%=content%></div> <div class=weui-dialog__ft> <% for(var i = 0; i < buttons.length; i++){ %> <a href=javascript:; class=\"weui-dialog__btn weui-dialog__btn_<%=buttons[i]['type']%>\"><%=buttons[i]['label']%></a> <% } %> </div> </div> </div> ";
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -2271,9 +2271,9 @@
 	exports.default = alert;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -2372,9 +2372,9 @@
 	exports.default = confirm;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -2473,15 +2473,15 @@
 	exports.default = toast;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = "<div class=\"<%= className %>\"> <div class=weui-mask_transparent></div> <div class=weui-toast> <i class=\"weui-icon_toast weui-icon-success-no-circle\"></i> <p class=weui-toast__content><%=content%></p> </div> </div> ";
 
-/***/ },
+/***/ }),
 /* 13 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -2573,15 +2573,15 @@
 	exports.default = loading;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 14 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = "<div class=\"weui-loading_toast <%= className %>\"> <div class=weui-mask_transparent></div> <div class=weui-toast> <i class=\"weui-loading weui-icon_toast\"></i> <p class=weui-toast__content><%=content%></p> </div> </div> ";
 
-/***/ },
+/***/ }),
 /* 15 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -2724,15 +2724,15 @@
 	exports.default = actionSheet;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 16 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = "<div class=\"<% if(isAndroid){ %>weui-skin_android <% } %><%= className %>\"> <div class=weui-mask></div> <div class=weui-actionsheet> <div class=weui-actionsheet__menu> <% for(var i = 0; i < menus.length; i++){ %> <div class=weui-actionsheet__cell><%= menus[i].label %></div> <% } %> </div> <div class=weui-actionsheet__action> <% for(var j = 0; j < actions.length; j++){ %> <div class=weui-actionsheet__cell><%= actions[j].label %></div> <% } %> </div> </div> </div> ";
 
-/***/ },
+/***/ }),
 /* 17 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -2844,15 +2844,15 @@
 	exports.default = topTips;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 18 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = "<div class=\"weui-toptips weui-toptips_warn <%= className %>\" style=display:block><%= content %></div> ";
 
-/***/ },
+/***/ }),
 /* 19 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -2946,9 +2946,9 @@
 	exports.default = searchBar;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 20 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -3049,31 +3049,15 @@
 	exports.default = tab;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 21 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /*
-	                                                                                                                                                                                                                                                                              * Tencent is pleased to support the open source community by making WeUI.js available.
-	                                                                                                                                                                                                                                                                              *
-	                                                                                                                                                                                                                                                                              * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
-	                                                                                                                                                                                                                                                                              *
-	                                                                                                                                                                                                                                                                              * Licensed under the MIT License (the "License"); you may not use this file except in compliance
-	                                                                                                                                                                                                                                                                              * with the License. You may obtain a copy of the License at
-	                                                                                                                                                                                                                                                                              *
-	                                                                                                                                                                                                                                                                              *       http://opensource.org/licenses/MIT
-	                                                                                                                                                                                                                                                                              *
-	                                                                                                                                                                                                                                                                              * Unless required by applicable law or agreed to in writing, software distributed under the License is
-	                                                                                                                                                                                                                                                                              * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
-	                                                                                                                                                                                                                                                                              * either express or implied. See the License for the specific language governing permissions and
-	                                                                                                                                                                                                                                                                              * limitations under the License.
-	                                                                                                                                                                                                                                                                              */
 
 	var _util = __webpack_require__(4);
 
@@ -3084,6 +3068,22 @@
 	var _topTips2 = _interopRequireDefault(_topTips);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/*
+	* Tencent is pleased to support the open source community by making WeUI.js available.
+	*
+	* Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+	*
+	* Licensed under the MIT License (the "License"); you may not use this file except in compliance
+	* with the License. You may obtain a copy of the License at
+	*
+	*       http://opensource.org/licenses/MIT
+	*
+	* Unless required by applicable law or agreed to in writing, software distributed under the License is
+	* distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+	* either express or implied. See the License for the specific language governing permissions and
+	* limitations under the License.
+	*/
 
 	function _findCellParent(ele) {
 	    if (!ele || !ele.classList) return null;
@@ -3105,45 +3105,33 @@
 	            return 'empty';
 	        } else if (input.type == 'checkbox') {
 	            if (reg) {
-	                var _ret = function () {
-	                    var checkboxInputs = $form.find('input[type="checkbox"][name="' + input.name + '"]');
-	                    var regs = reg.replace(/[{\s}]/g, '').split(',');
-	                    var count = 0;
+	                var checkboxInputs = $form.find('input[type="checkbox"][name="' + input.name + '"]');
+	                var regs = reg.replace(/[{\s}]/g, '').split(',');
+	                var count = 0;
 
-	                    if (regs.length != 2) {
-	                        throw input.outerHTML + ' regexp is wrong.';
-	                    }
+	                if (regs.length != 2) {
+	                    throw input.outerHTML + ' regexp is wrong.';
+	                }
 
-	                    checkboxInputs.forEach(function (checkboxInput) {
-	                        if (checkboxInput.checked) ++count;
-	                    });
+	                checkboxInputs.forEach(function (checkboxInput) {
+	                    if (checkboxInput.checked) ++count;
+	                });
 
-	                    if (regs[1] === '') {
-	                        // {0,}
-	                        if (count >= parseInt(regs[0])) {
-	                            return {
-	                                v: null
-	                            };
-	                        } else {
-	                            return {
-	                                v: count == 0 ? 'empty' : 'notMatch'
-	                            };
-	                        }
+	                if (regs[1] === '') {
+	                    // {0,}
+	                    if (count >= parseInt(regs[0])) {
+	                        return null;
 	                    } else {
-	                        // {0,2}
-	                        if (parseInt(regs[0]) <= count && count <= parseInt(regs[1])) {
-	                            return {
-	                                v: null
-	                            };
-	                        } else {
-	                            return {
-	                                v: count == 0 ? 'empty' : 'notMatch'
-	                            };
-	                        }
+	                        return count == 0 ? 'empty' : 'notMatch';
 	                    }
-	                }();
-
-	                if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+	                } else {
+	                    // {0,2}
+	                    if (parseInt(regs[0]) <= count && count <= parseInt(regs[1])) {
+	                        return null;
+	                    } else {
+	                        return count == 0 ? 'empty' : 'notMatch';
+	                    }
+	                }
 	            } else {
 	                return input.checked ? null : 'empty';
 	            }
@@ -3344,9 +3332,9 @@
 	};
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 22 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -3564,82 +3552,70 @@
 	    }
 
 	    if (options.onBeforeQueued) {
-	        (function () {
-	            var onBeforeQueued = options.onBeforeQueued;
-	            options.onBeforeQueued = function (file, files) {
-	                var ret = onBeforeQueued.call(file, files);
-	                if (ret === false) {
-	                    return false;
-	                }
-	                if (ret === true) {
-	                    return;
-	                }
+	        var onBeforeQueued = options.onBeforeQueued;
+	        options.onBeforeQueued = function (file, files) {
+	            var ret = onBeforeQueued.call(file, files);
+	            if (ret === false) {
+	                return false;
+	            }
+	            if (ret === true) {
+	                return;
+	            }
 
-	                var $item = (0, _util2.default)(_util2.default.render(_item2.default, {
-	                    id: file.id
-	                }));
-	                $uploader.find('.weui-uploader__files').append($item);
-	            };
-	        })();
+	            var $item = (0, _util2.default)(_util2.default.render(_item2.default, {
+	                id: file.id
+	            }));
+	            $uploader.find('.weui-uploader__files').append($item);
+	        };
 	    }
 	    if (options.onQueued) {
-	        (function () {
-	            var onQueued = options.onQueued;
-	            options.onQueued = function (file) {
-	                if (!onQueued.call(file)) {
-	                    var $file = $uploader.find('[data-id="' + file.id + '"]');
-	                    $file.css({
-	                        backgroundImage: 'url("' + (file.base64 || file.url) + '")'
-	                    });
-	                    if (!options.auto) {
-	                        clearFileStatus($uploader, file.id);
-	                    }
-	                }
-	            };
-	        })();
-	    }
-	    if (options.onBeforeSend) {
-	        (function () {
-	            var onBeforeSend = options.onBeforeSend;
-	            options.onBeforeSend = function (file, data, headers) {
-	                var ret = onBeforeSend.call(file, data, headers);
-	                if (ret === false) {
-	                    return false;
-	                }
-	            };
-	        })();
-	    }
-	    if (options.onSuccess) {
-	        (function () {
-	            var onSuccess = options.onSuccess;
-	            options.onSuccess = function (file, ret) {
-	                file.status = 'success';
-	                if (!onSuccess.call(file, ret)) {
+	        var onQueued = options.onQueued;
+	        options.onQueued = function (file) {
+	            if (!onQueued.call(file)) {
+	                var $file = $uploader.find('[data-id="' + file.id + '"]');
+	                $file.css({
+	                    backgroundImage: 'url("' + (file.base64 || file.url) + '")'
+	                });
+	                if (!options.auto) {
 	                    clearFileStatus($uploader, file.id);
 	                }
-	            };
-	        })();
+	            }
+	        };
+	    }
+	    if (options.onBeforeSend) {
+	        var onBeforeSend = options.onBeforeSend;
+	        options.onBeforeSend = function (file, data, headers) {
+	            var ret = onBeforeSend.call(file, data, headers);
+	            if (ret === false) {
+	                return false;
+	            }
+	        };
+	    }
+	    if (options.onSuccess) {
+	        var onSuccess = options.onSuccess;
+	        options.onSuccess = function (file, ret) {
+	            file.status = 'success';
+	            if (!onSuccess.call(file, ret)) {
+	                clearFileStatus($uploader, file.id);
+	            }
+	        };
 	    }
 	    if (options.onProgress) {
-	        (function () {
-	            var onProgress = options.onProgress;
-	            options.onProgress = function (file, percent) {
-	                if (!onProgress.call(file, percent)) {
-	                    findFileCtn($uploader, file.id).html(percent + '%');
-	                }
-	            };
-	        })();
+	        var onProgress = options.onProgress;
+	        options.onProgress = function (file, percent) {
+	            if (!onProgress.call(file, percent)) {
+	                findFileCtn($uploader, file.id).html(percent + '%');
+	            }
+	        };
 	    }
 	    if (options.onError) {
-	        (function () {
-	            var onError = options.onError;
-	            options.onError = function (file, err) {
-	                file.status = 'fail';
-	                if (!onError.call(file, err)) {
-	                    findFileCtn($uploader, file.id).html('<i class="weui-icon-warn"></i>');
-	                }
-	            };
-	        })();
+	        var onError = options.onError;
+	        options.onError = function (file, err) {
+	            file.status = 'fail';
+	            if (!onError.call(file, err)) {
+	                findFileCtn($uploader, file.id).html('<i class="weui-icon-warn"></i>');
+	            }
+	        };
 	    }
 
 	    $uploader.find('input[type="file"]').on('change', function (evt) {
@@ -3677,15 +3653,15 @@
 	exports.default = uploader;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 23 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = "<li class=\"weui-uploader__file weui-uploader__file_status\" data-id=\"<%= id %>\"> <div class=weui-uploader__file-content> <i class=weui-loading style=width:30px;height:30px></i> </div> </li> ";
 
-/***/ },
+/***/ }),
 /* 24 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -3915,9 +3891,9 @@
 	};
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 25 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -4020,9 +3996,9 @@
 	}
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 26 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -4032,14 +4008,14 @@
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /*
 	                                                                                                                                                                                                                                                                              * Tencent is pleased to support the open source community by making WeUI.js available.
-	                                                                                                                                                                                                                                                                              * 
+	                                                                                                                                                                                                                                                                              *
 	                                                                                                                                                                                                                                                                              * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
-	                                                                                                                                                                                                                                                                              * 
+	                                                                                                                                                                                                                                                                              *
 	                                                                                                                                                                                                                                                                              * Licensed under the MIT License (the "License"); you may not use this file except in compliance
 	                                                                                                                                                                                                                                                                              * with the License. You may obtain a copy of the License at
-	                                                                                                                                                                                                                                                                              * 
+	                                                                                                                                                                                                                                                                              *
 	                                                                                                                                                                                                                                                                              *       http://opensource.org/licenses/MIT
-	                                                                                                                                                                                                                                                                              * 
+	                                                                                                                                                                                                                                                                              *
 	                                                                                                                                                                                                                                                                              * Unless required by applicable law or agreed to in writing, software distributed under the License is
 	                                                                                                                                                                                                                                                                              * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
 	                                                                                                                                                                                                                                                                              * either express or implied. See the License for the specific language governing permissions and
@@ -4067,6 +4043,8 @@
 	var _group = __webpack_require__(31);
 
 	var _group2 = _interopRequireDefault(_group);
+
+	__webpack_require__(32);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -4244,6 +4222,7 @@
 	        id: 'default',
 	        className: '',
 	        container: 'body',
+	        rowHeight: 34,
 	        onChange: _util2.default.noop,
 	        onConfirm: _util2.default.noop,
 	        onClose: _util2.default.noop
@@ -4322,6 +4301,7 @@
 	        $picker.find('.weui-picker__group').eq(level).scroll({
 	            items: items,
 	            temp: lineTemp[level],
+	            rowHeight: defaults.rowHeight,
 	            onChange: function onChange(item, index) {
 	                //为当前的result赋值。
 	                if (item) {
@@ -4539,9 +4519,9 @@
 	};
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 27 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -4748,22 +4728,22 @@
 	};
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 28 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /*
 	                                                                                                                                                                                                                                                                              * Tencent is pleased to support the open source community by making WeUI.js available.
-	                                                                                                                                                                                                                                                                              * 
+	                                                                                                                                                                                                                                                                              *
 	                                                                                                                                                                                                                                                                              * Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
-	                                                                                                                                                                                                                                                                              * 
+	                                                                                                                                                                                                                                                                              *
 	                                                                                                                                                                                                                                                                              * Licensed under the MIT License (the "License"); you may not use this file except in compliance
 	                                                                                                                                                                                                                                                                              * with the License. You may obtain a copy of the License at
-	                                                                                                                                                                                                                                                                              * 
+	                                                                                                                                                                                                                                                                              *
 	                                                                                                                                                                                                                                                                              *       http://opensource.org/licenses/MIT
-	                                                                                                                                                                                                                                                                              * 
+	                                                                                                                                                                                                                                                                              *
 	                                                                                                                                                                                                                                                                              * Unless required by applicable law or agreed to in writing, software distributed under the License is
 	                                                                                                                                                                                                                                                                              * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
 	                                                                                                                                                                                                                                                                              * either express or implied. See the License for the specific language governing permissions and
@@ -4854,9 +4834,10 @@
 	        offset: 3, // 列表初始化时的偏移量（列表初始化时，选项是聚焦在中间的，通过offset强制往上挪3项，以达到初始选项是为顶部的那项）
 	        rowHeight: 34, // 列表每一行的高度
 	        onChange: _util2.default.noop, // onChange回调
-	        temp: null, // translate的缓存
-	        bodyHeight: 7 * 34 // picker的高度，用于辅助点击滚动的计算
+	        temp: null // translate的缓存
 	    }, options);
+	    defaults.bodyHeight = 7 * defaults.rowHeight; // picker的高度，用于辅助点击滚动的计算
+
 	    var items = defaults.items.map(function (item) {
 	        return '<div class="weui-picker__item' + (item.disabled ? ' weui-picker__item_disabled' : '') + '">' + ((typeof item === 'undefined' ? 'undefined' : _typeof(item)) == 'object' ? item.label : item) + '</div>';
 	    }).join('');
@@ -5012,9 +4993,9 @@
 	    }
 	};
 
-/***/ },
+/***/ }),
 /* 29 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -5045,21 +5026,390 @@
 	    return depth;
 	};
 
-/***/ },
+/***/ }),
 /* 30 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = "<div class=\"<%= className %>\"> <div class=weui-mask></div> <div class=weui-picker> <div class=weui-picker__hd> <a href=javascript:; data-action=cancel class=weui-picker__action>取消</a> <a href=javascript:; data-action=select class=weui-picker__action id=weui-picker-confirm>确定</a> </div> <div class=weui-picker__bd></div> </div> </div> ";
 
-/***/ },
+/***/ }),
 /* 31 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = "<div class=weui-picker__group> <div class=weui-picker__mask></div> <div class=weui-picker__indicator></div> <div class=weui-picker__content></div> </div>";
 
-/***/ },
+/***/ }),
 /* 32 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(33);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(35)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../node_modules/_css-loader@0.25.0@css-loader/index.js?modules&importLoaders=1&localIdentName=[local]!../../node_modules/_postcss-loader@0.13.0@postcss-loader/index.js!../../node_modules/_less-loader@2.2.3@less-loader/index.js!./picker.less", function() {
+				var newContent = require("!!../../node_modules/_css-loader@0.25.0@css-loader/index.js?modules&importLoaders=1&localIdentName=[local]!../../node_modules/_postcss-loader@0.13.0@postcss-loader/index.js!../../node_modules/_less-loader@2.2.3@less-loader/index.js!./picker.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(34)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/*\n* Tencent is pleased to support the open source community by making WeUI available.\n*\n* Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.\n*\n* Licensed under the MIT License (the \"License\"); you may not use this file except in compliance\n* with the License. You may obtain a copy of the License at\n*\n*       http://opensource.org/licenses/MIT\n*\n* Unless required by applicable law or agreed to in writing, software distributed under the License is\n* distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,\n* either express or implied. See the License for the specific language governing permissions and\n* limitations under the License.\n*/\n/* picker */\n.weui-picker {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  bottom: 0;\n  z-index: 5000;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  transform: translate(0, 100%);\n  transition: transform .3s;\n}\n.weui-picker__hd {\n  display: -ms-flexbox;\n  display: flex;\n  padding: 0.18rem .3rem;\n  background-color: #fff;\n  position: relative;\n  text-align: center;\n  font-size: 1.7em;\n}\n.weui-picker__hd:after {\n  content: \" \";\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  height: 1px;\n  border-bottom: 1px solid #E5E5E5;\n  color: #E5E5E5;\n  transform-origin: 0 100%;\n  transform: scaleY(0.5);\n}\n.weui-picker__action {\n  display: block;\n  -ms-flex: 1;\n      flex: 1;\n  color: #FA6855;\n  text-decoration: none;\n}\n.weui-picker__action:first-child {\n  text-align: left;\n  color: #888;\n}\n.weui-picker__action:last-child {\n  text-align: right;\n}\n.weui-picker__bd {\n  display: -ms-flexbox;\n  display: flex;\n  position: relative;\n  background-color: #fff;\n  height: 4.76rem;\n  overflow: hidden;\n}\n.weui-picker__group {\n  -ms-flex: 1;\n      flex: 1;\n  position: relative;\n  height: 100%;\n}\n.weui-picker__mask {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  margin: 0 auto;\n  z-index: 3;\n  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)), linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));\n  background-position: top, bottom;\n  background-size: 100% 2.04rem;\n  background-repeat: no-repeat;\n  transform: translateZ(0);\n}\n.weui-picker__indicator {\n  width: 100%;\n  height: 0.68rem;\n  position: absolute;\n  left: 0;\n  top: 2.04rem;\n  z-index: 3;\n}\n.weui-picker__indicator:before {\n  content: \" \";\n  position: absolute;\n  left: 0;\n  top: 0;\n  right: 0;\n  height: 1px;\n  border-top: 1px solid #E5E5E5;\n  color: #E5E5E5;\n  transform-origin: 0 0;\n  transform: scaleY(0.5);\n}\n.weui-picker__indicator:after {\n  content: \" \";\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  height: 1px;\n  border-bottom: 1px solid #E5E5E5;\n  color: #E5E5E5;\n  transform-origin: 0 100%;\n  transform: scaleY(0.5);\n}\n.weui-picker__content {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n}\n.weui-picker__item {\n  padding: 0;\n  height: 0.68rem;\n  line-height: 0.68rem;\n  text-align: center;\n  color: #000;\n  font-size: 1.6em;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n.weui-picker__item_disabled {\n  color: #999999;\n}\n/* animate */\n@keyframes slideUp {\n  from {\n    transform: translate3d(0, 100%, 0);\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n.weui-animate-slide-up {\n  animation: slideUp ease .3s forwards;\n}\n@keyframes slideDown {\n  from {\n    transform: translate3d(0, 0, 0);\n  }\n  to {\n    transform: translate3d(0, 100%, 0);\n  }\n}\n.weui-animate-slide-down {\n  animation: slideDown ease .3s forwards;\n}\n@keyframes fadeIn {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n.weui-animate-fade-in {\n  animation: fadeIn ease .3s forwards;\n}\n@keyframes fadeOut {\n  from {\n    opacity: 1;\n  }\n  to {\n    opacity: 0;\n  }\n}\n.weui-animate-fade-out {\n  animation: fadeOut ease .3s forwards;\n}\n/* mask */\n.weui-mask {\n  position: fixed;\n  z-index: 1000;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: rgba(0, 0, 0, 0.6);\n}\n.weui-mask_transparent {\n  position: fixed;\n  z-index: 1000;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n}\n", ""]);
+
+	// exports
+	exports.locals = {
+		"weui-picker": "weui-picker",
+		"weui-picker__hd": "weui-picker__hd",
+		"weui-picker__action": "weui-picker__action",
+		"weui-picker__bd": "weui-picker__bd",
+		"weui-picker__group": "weui-picker__group",
+		"weui-picker__mask": "weui-picker__mask",
+		"weui-picker__indicator": "weui-picker__indicator",
+		"weui-picker__content": "weui-picker__content",
+		"weui-picker__item": "weui-picker__item",
+		"weui-picker__item_disabled": "weui-picker__item_disabled",
+		"weui-animate-slide-up": "weui-animate-slide-up",
+		"slideUp": "slideUp",
+		"weui-animate-slide-down": "weui-animate-slide-down",
+		"slideDown": "slideDown",
+		"weui-animate-fade-in": "weui-animate-fade-in",
+		"fadeIn": "fadeIn",
+		"weui-animate-fade-out": "weui-animate-fade-out",
+		"fadeOut": "fadeOut",
+		"weui-mask": "weui-mask",
+		"weui-mask_transparent": "weui-mask_transparent"
+	};
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(self.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -5071,7 +5421,7 @@
 
 	var _util2 = _interopRequireDefault(_util);
 
-	var _gallery = __webpack_require__(33);
+	var _gallery = __webpack_require__(37);
 
 	var _gallery2 = _interopRequireDefault(_gallery);
 
@@ -5157,15 +5507,15 @@
 	exports.default = gallery;
 	module.exports = exports['default'];
 
-/***/ },
-/* 33 */
-/***/ function(module, exports) {
+/***/ }),
+/* 37 */
+/***/ (function(module, exports) {
 
 	module.exports = "<div class=\"weui-gallery <%= className %>\"> <span class=weui-gallery__img style=\"background-image:url(<%= url %>)\"></span> <div class=weui-gallery__opr> <a href=javascript: class=weui-gallery__del> <i class=\"weui-icon-delete weui-icon_gallery-delete\"></i> </a> </div> </div> ";
 
-/***/ },
-/* 34 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -5316,5 +5666,5 @@
 	exports.default = slider;
 	module.exports = exports['default'];
 
-/***/ }
+/***/ })
 /******/ ]);
